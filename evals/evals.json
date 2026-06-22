@@ -1,0 +1,23 @@
+{
+  "skill_name": "loop-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Ich pflege drei Repos und merke, dass ich jeden Montag von Hand durch die offenen PRs gehe, veraltete Branches lösche und schaue, was hängengeblieben ist. Lohnt sich daraus ein Loop, und wenn ja, wie sähe er aus?",
+      "expected_output": "Erkennt die wiederkehrende Wartungsarbeit als loop-tauglich (mehrere Vorkommen, frische Beobachtung ändert die nächste Aktion), liefert einen knappen, kopierfertigen Loop mit festem Check und No-Progress-Stopp, verlangt Freigabe vor dem Löschen, erfindet keine Tools/Limits.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Bau mir einen Loop, der unsere Produkt-Doku aktuell hält. Sie hinkt dem Code ständig hinterher.",
+      "expected_output": "Stellt bei Bedarf eine bis wenige kurze Fragen in Alltagssprache, liefert dann einen begrenzten Loop: Abweichungen zwischen Code und Doku finden, nur die betroffenen Stellen korrigieren, mit beobachtbarem Check, klarem Stopp und Übergabe. Ein Satz Erklärung plus kurzer Prompt, keine erfundenen Details.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Mein Optimierungs-Agent läuft endlos und meldet am Ende immer 'erfolgreich abgeschlossen', auch wenn nichts besser geworden ist. Schau dir den Loop an: 'Verbessere die Antwortqualität immer weiter, bis sie gut ist, und bewerte dich dabei selbst.'",
+      "expected_output": "Diagnostiziert als Loop-Doktor die fehlende Bremse und die Selbstabnahme/Reward-Hacking-Gefahr, repariert minimal: beobachtbares Erfolgs-Gate, Arbeitssignal vom frischen Abnahme-Check getrennt, Prüfung möglichst durch getrennte Instanz, No-Progress-Stopp, Fehler nicht als Erfolg. Liefert das Loop-Doktor-Format mit Urteil und repariertem Prompt.",
+      "files": []
+    }
+  ]
+}

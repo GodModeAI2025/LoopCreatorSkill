@@ -1,0 +1,19 @@
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Editoren
+.vscode/
+.idea/
+*.swp
+
+# Abhängigkeiten / Build
+node_modules/
+dist/
+.cache/
+
+# Lokale Notizen / temporäre Loop-Zustände
+tmp/
+*.local.md
+.env
+.env.*

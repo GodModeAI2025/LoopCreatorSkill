@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loop Engineering — KI-Agenten-Loops bauen, prüfen, stoppen | LoopCreatorSkill</title>
+    <meta
+      name="description"
+      content="Loop Engineering erklärt: Was ein KI-Agenten-Loop ist, wann er sich lohnt, wie man ihn baut und prüft – und warum die Stärke im Prüfschritt und im klaren Stopp liegt, nicht in maximaler Autonomie."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://godmodeai2025.github.io/LoopCreatorSkill/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" type="application/xml" href="sitemap.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content="Loop Engineering — KI-Agenten-Loops bauen, prüfen, stoppen" />
+    <meta
+      property="og:description"
+      content="Ein Loop ist ein Einmal-Prompt mit Rückmeldung: handeln, messen, behalten oder verwerfen – bis ein Ziel erreicht ist. Die Kunst liegt im Stopp."
+    />
+    <meta property="og:url" content="https://godmodeai2025.github.io/LoopCreatorSkill/" />
+    <meta property="og:image" content="https://godmodeai2025.github.io/LoopCreatorSkill/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Loop Engineering — Ein Loop, der weiß, wann er fertig ist." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Loop Engineering — KI-Agenten-Loops bauen, prüfen, stoppen" />
+    <meta name="twitter:description" content="Ein Loop ist ein Einmal-Prompt mit Rückmeldung: handeln, messen, behalten oder verwerfen – bis ein Ziel erreicht ist. Die Kunst liegt im Stopp." />
+    <meta name="twitter:image" content="https://godmodeai2025.github.io/LoopCreatorSkill/og-image.png" />
+    <script>
+      (() => {
+        const KEY = "loopcreator-theme";
+        let stored = null;
+        try { stored = localStorage.getItem(KEY); } catch {}
+        const theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      :root {
+        --bg: #fafaf9;
+        --bg-grad: radial-gradient(1200px 600px at 78% -8%, #ece9ff 0%, transparent 60%),
+          radial-gradient(900px 500px at 8% 4%, #dcf5ef 0%, transparent 55%);
+        --surface: #ffffff;
+        --surface-2: #f4f4f3;
+        --text: #15171a;
+        --muted: #59616c;
+        --border: #e6e6e4;
+        --accent: #4f46e5;
+        --accent-2: #0c7d72;
+        --accent-soft: #eef0fe;
+        --danger: #b4452f;
+        --shadow: 0 1px 2px rgba(15, 17, 26, 0.04), 0 8px 30px rgba(15, 17, 26, 0.06);
+        --radius: 16px;
+        --maxw: 1080px;
+      }
+      html[data-theme="dark"] {
+        --bg: #0c0e11;
+        --bg-grad: radial-gradient(1200px 600px at 78% -8%, #1c1b3a 0%, transparent 60%),
+          radial-gradient(900px 500px at 8% 4%, #0c2b29 0%, transparent 55%);
+        --surface: #14171c;
+        --surface-2: #1a1e24;
+        --text: #eceef1;
+        --muted: #9aa4b1;
+        --border: #262b32;
+        --accent: #8b93f8;
+        --accent-2: #2dd4bf;
+        --accent-soft: #1a1d33;
+        --danger: #f08a72;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      h1, h2, h3 { line-height: 1.18; letter-spacing: -0.02em; font-weight: 700; }
+      h2 { font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.15rem); margin: 0 0 0.5rem; }
+      h3 { font-size: 1.15rem; margin: 0 0 0.35rem; }
+      p { margin: 0 0 1rem; }
+      .skip-link {
+        position: absolute; left: -999px; top: 0; background: var(--accent);
+        color: #fff; padding: 10px 16px; border-radius: 0 0 10px 0; z-index: 100;
+      }
+      .skip-link:focus { left: 0; }
+
+      /* Header */
+      header.site {
+        position: sticky; top: 0; z-index: 50;
+        backdrop-filter: saturate(150%) blur(10px);
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav { display: flex; align-items: center; gap: 18px; height: 64px; }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+      .brand:hover { text-decoration: none; }
+      .brand .dot {
+        width: 26px; height: 26px; border-radius: 50%;
+        border: 3px solid var(--accent); border-right-color: transparent;
+        display: inline-block; transform: rotate(-45deg);
+      }
+      .nav .spacer { flex: 1; }
+      .nav-links { display: flex; gap: 6px; }
+      .nav-links a {
+        color: var(--muted); padding: 8px 12px; border-radius: 10px; font-size: 0.93rem;
+      }
+      .nav-links a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+      .toggle {
+        cursor: pointer; border: 1px solid var(--border); background: var(--surface);
+        color: var(--text); border-radius: 10px; width: 40px; height: 40px;
+        display: inline-grid; place-items: center; font-size: 1.05rem;
+      }
+      .toggle:hover { background: var(--surface-2); }
+
+      /* Hero */
+      .hero { background: var(--bg-grad); border-bottom: 1px solid var(--border); }
+      .hero-inner { padding: 76px 0 64px; }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem;
+        font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+        color: var(--accent); background: var(--accent-soft);
+        padding: 6px 12px; border-radius: 999px; margin-bottom: 20px;
+      }
+      .hero h1 { font-size: clamp(2.1rem, 1.3rem + 4vw, 3.6rem); margin: 0 0 18px; max-width: 16ch; }
+      .hero .lede { font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem); color: var(--muted); max-width: 60ch; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
+        padding: 12px 20px; border-radius: 12px; border: 1px solid transparent;
+        cursor: pointer; font-size: 0.98rem;
+      }
+      .btn:hover { text-decoration: none; }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { filter: brightness(1.07); }
+      .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+      .btn-ghost:hover { background: var(--surface-2); }
+
+      /* Sections */
+      section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+      .section-head { max-width: 62ch; margin-bottom: 32px; }
+      .section-head p { color: var(--muted); font-size: 1.05rem; margin: 0; }
+      .kicker {
+        font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; color: var(--accent-2); margin-bottom: 8px;
+      }
+
+      /* Cards & grids */
+      .grid { display: grid; gap: 18px; }
+      .g2 { grid-template-columns: repeat(2, 1fr); }
+      .g3 { grid-template-columns: repeat(3, 1fr); }
+      .g4 { grid-template-columns: repeat(4, 1fr); }
+      .card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow);
+      }
+      .card h3 { display: flex; align-items: center; gap: 10px; }
+      .card p { color: var(--muted); margin: 0; font-size: 0.97rem; }
+      .num {
+        flex: none; width: 30px; height: 30px; border-radius: 9px;
+        background: var(--accent-soft); color: var(--accent); font-weight: 700;
+        display: grid; place-items: center; font-size: 0.95rem;
+      }
+
+      /* Callout / facts */
+      .facts {
+        background: var(--surface); border: 1px solid var(--border);
+        border-left: 4px solid var(--accent); border-radius: 12px;
+        padding: 22px 24px; box-shadow: var(--shadow); margin-top: 34px;
+      }
+      .facts h3 { color: var(--text); margin-bottom: 12px; }
+      .facts ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+      .facts li { margin-bottom: 8px; }
+
+      .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .compare .card.bad { border-left: 4px solid var(--danger); }
+      .compare .card.good { border-left: 4px solid var(--accent-2); }
+      .tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+      .tag.bad { color: var(--danger); }
+      .tag.good { color: var(--accent-2); }
+
+      /* Cycle */
+      .cycle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .step { position: relative; }
+      .step .num { margin-bottom: 10px; }
+
+      blockquote.prompt {
+        margin: 0; background: var(--surface-2); border: 1px solid var(--border);
+        border-radius: 12px; padding: 18px 20px; color: var(--text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.92rem; line-height: 1.6; white-space: pre-wrap;
+      }
+
+      .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+      .pill {
+        font-size: 0.85rem; color: var(--muted); background: var(--surface-2);
+        border: 1px solid var(--border); padding: 5px 11px; border-radius: 999px;
+      }
+      .pill.warn { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 35%, var(--border)); }
+      .pill.ok { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 35%, var(--border)); }
+
+      .lead-claim {
+        font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); font-weight: 600;
+        line-height: 1.4; max-width: 30ch; letter-spacing: -0.01em;
+      }
+      .lead-claim .accent { color: var(--accent); }
+
+      code.inline {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: var(--surface-2); border: 1px solid var(--border);
+        padding: 1px 6px; border-radius: 6px; font-size: 0.88em;
+      }
+      pre.install {
+        background: var(--surface-2); border: 1px solid var(--border);
+        border-radius: 12px; padding: 16px 18px; overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88rem; margin: 0;
+      }
+
+      /* Footer / Impressum */
+      footer.site { padding: 56px 0 64px; background: var(--surface); }
+      footer.site h2 { font-size: 1.3rem; }
+      .imprint { color: var(--muted); font-size: 0.92rem; max-width: 70ch; }
+      .imprint strong { color: var(--text); }
+      .imprint .block { margin-bottom: 18px; }
+      .footer-meta {
+        display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center;
+        margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);
+        color: var(--muted); font-size: 0.88rem;
+      }
+
+      @media (max-width: 860px) {
+        .g4 { grid-template-columns: repeat(2, 1fr); }
+        .cycle { grid-template-columns: repeat(2, 1fr); }
+        .nav-links { display: none; }
+      }
+      @media (max-width: 620px) {
+        .g2, .g3, .compare { grid-template-columns: 1fr; }
+        .g4, .cycle { grid-template-columns: 1fr; }
+        section { padding: 48px 0; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <header class="site">
+      <div class="wrap nav">
+        <a class="brand" href="#top" aria-label="LoopCreatorSkill Startseite">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Loop&thinsp;Engineering</span>
+        </a>
+        <span class="spacer"></span>
+        <nav class="nav-links" aria-label="Seitennavigation">
+          <a href="#grundlagen">Grundlagen</a>
+          <a href="#zyklus">Der Zyklus</a>
+          <a href="#bremsen">Die Bremsen</a>
+          <a href="#praxis">Praxis</a>
+          <a href="#skill">Der Skill</a>
+        </nav>
+        <button class="toggle" id="theme-toggle" type="button" aria-label="Hell/Dunkel umschalten" title="Hell/Dunkel umschalten">
+          <span aria-hidden="true" id="theme-icon">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <a id="top"></a>
+      <!-- HERO -->
+      <div class="hero">
+        <div class="wrap hero-inner">
+          <span class="eyebrow">Loop Engineering für KI-Agenten</span>
+          <h1>Ein Loop, der weiß, wann er fertig ist.</h1>
+          <p class="lede">
+            Nachts um drei sitzt niemand im Büro, der Agent schon. Er liest die
+            Fehlerliste der Produktivumgebung, baut einen Fix, lässt die Tests laufen
+            und behält die Änderung nur, wenn die Fehlerrate sinkt. Am Morgen liegt
+            kein Wust aus hundert Änderungen bereit, sondern eine Handvoll geprüfter
+            Verbesserungen. Der Unterschied zum üblichen KI-Einsatz steckt in einem
+            Wort: <strong>prüfen</strong>.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#skill">Den Skill ansehen</a>
+            <a class="btn btn-ghost" href="#grundlagen">Was ist ein Loop?</a>
+          </div>
+
+          <div class="facts">
+            <h3>Kurz &amp; knapp</h3>
+            <ul>
+              <li>Ein Loop ist ein Einmal-Prompt mit Rückmeldung: handeln, messen, behalten oder verwerfen – bis ein Ziel erreicht ist.</li>
+              <li>Die Stärke liegt im Prüfschritt und im klaren Stopp, nicht in möglichst viel Autonomie.</li>
+              <li>Schlecht gebaute Loops laufen ins Leere: Sie optimieren ihre eigene Kennzahl oder hören nie auf.</li>
+              <li>Prognosen erwarten, dass bis Ende 2027 über 40&nbsp;Prozent der Agentenprojekte eingestellt werden – wegen steigender Kosten, unklaren Nutzens und schwacher Kontrolle.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRUNDLAGEN -->
+      <section id="grundlagen">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Vom Einmal-Prompt zum Regelkreis</div>
+            <h2>Was ein Loop ist</h2>
+            <p>
+              Die meisten Prompts verlangen eine einzige Aktion. Ein Loop dreht daraus
+              einen Rückkopplungskreis: Der Agent handelt, beobachtet, wie sich der
+              Zustand ändert, und richtet den nächsten Schritt danach aus. Ohne diese
+              Rückmeldung bleibt ein Sprachmodell ein Textgenerator. Mit ihr wird daraus
+              ein System, das Ergebnisse vergleicht, statt sich auf das eigene
+              Urteil zu verlassen.
+            </p>
+          </div>
+
+          <div class="compare">
+            <div class="card bad">
+              <span class="tag bad">Einmal-Prompt</span>
+              <h3 style="margin-top:6px;">„Mach diese Website schneller."</h3>
+              <p>Die KI liefert einen Vorschlag, und damit endet die Sache. Niemand misst, ob es geholfen hat.</p>
+            </div>
+            <div class="card good">
+              <span class="tag good">Loop</span>
+              <h3 style="margin-top:6px;">„Finde die langsamste Seite …"</h3>
+              <p>… verbessere genau eine Sache, miss erneut, behalte die Änderung nur, wenn sie hilft, und mach weiter, bis jede Seite das Ziel erreicht oder ein Durchgang nichts mehr bringt.</p>
+            </div>
+          </div>
+
+          <div class="section-head" style="margin-top:40px;">
+            <h3 style="font-size:1.15rem;">Die vier Leitfragen jedes brauchbaren Loops</h3>
+          </div>
+          <div class="grid g4">
+            <div class="card"><h3><span class="num">1</span>Was?</h3><p>Welches Ergebnis wird verfolgt – messbar oder prüfbar formuliert?</p></div>
+            <div class="card"><h3><span class="num">2</span>Woran?</h3><p>Woran erkennt der Loop, ob der letzte Versuch funktioniert hat?</p></div>
+            <div class="card"><h3><span class="num">3</span>Wohin?</h3><p>Was macht er mit dem Gelernten – wie ändert es die nächste Aktion?</p></div>
+            <div class="card"><h3><span class="num">4</span>Wann Schluss?</h3><p>Wann hört er auf oder fragt einen Menschen?</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZYKLUS -->
+      <section id="zyklus">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Der Feedback-Zyklus</div>
+            <h2>Sechs Schritte, ein Regelkreis</h2>
+            <p>
+              Jeder gute Loop läuft um dieselbe Schleife. Sie hält die Aktionen klein,
+              die Prüfung fest und den Fortschritt vergleichbar.
+            </p>
+          </div>
+          <div class="cycle">
+            <div class="card step"><span class="num">1</span><h3>Beobachten</h3><p>Frischen Zustand lesen und die vereinbarten Belege sammeln.</p></div>
+            <div class="card step"><span class="num">2</span><h3>Wählen</h3><p>Aus expliziten Kriterien die wertvollste Aktion im erlaubten Rahmen auswählen.</p></div>
+            <div class="card step"><span class="num">3</span><h3>Handeln</h3><p>Eine begrenzte, umkehrbare Änderung machen oder einen Kandidaten erzeugen.</p></div>
+            <div class="card step"><span class="num">4</span><h3>Prüfen</h3><p>Denselben Abnahme-Check unter gleichen Bedingungen laufen lassen.</p></div>
+            <div class="card step"><span class="num">5</span><h3>Festhalten</h3><p>Aktion, Beleg, Ergebnis und Restarbeit speichern.</p></div>
+            <div class="card step"><span class="num">6</span><h3>Wiederholen oder Stoppen</h3><p>Weiter, solange Fortschritt messbar ist – sonst in einen benannten Endzustand.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NÜTZLICH -->
+      <section id="nuetzlich">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Was einen Loop nützlich macht</div>
+            <h2>Vier Eigenschaften, die den Unterschied machen</h2>
+          </div>
+          <div class="grid g4">
+            <div class="card"><h3>Klares Ziel</h3><p>„Code verbessern" ist vage. „Jede Seite unter 50&nbsp;ms unter gleichen Testbedingungen" gibt eine echte Ziellinie.</p></div>
+            <div class="card"><h3>Kleine Schritte</h3><p>Eine begrenzte, umkehrbare Änderung pro Durchgang. Kleines lässt sich leichter prüfen und leichter zurücknehmen.</p></div>
+            <div class="card"><h3>Fester Prüfschritt</h3><p>Derselbe Test, Benchmark, dieselbe Rubrik nach jeder Änderung. Der Check entscheidet – nicht die Meinung des Agenten.</p></div>
+            <div class="card"><h3>Definierter Stopp</h3><p>Was Erfolg heißt, wann nichts zu tun ist, wann er um Freigabe bittet und wann er blockiert oder erschöpft aufhört.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GEFAHREN -->
+      <section id="gefahren">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Der Haken</div>
+            <h2>Loops, die nicht aufhören</h2>
+            <p>
+              Ein Loop ohne sauberen Prüfschritt optimiert irgendwann sich selbst. Wer
+              einem Agenten sagt „mach das so lange besser, bis es gut ist", überlässt
+              ihm die Definition von „gut". Das geht schief – auf zwei typische Arten.
+            </p>
+          </div>
+          <div class="grid g2">
+            <div class="card bad" style="border-left:4px solid var(--danger);">
+              <span class="tag bad">Reward Hacking</span>
+              <h3 style="margin-top:6px;">Die Kennzahl statt des Ziels</h3>
+              <p>Der Agent verbessert die Belohnung, nicht den Zweck. Das Lehrbuchbeispiel: ein Agent für die Lieferkette, der die Lager vollstapelt, statt die Auslieferung zu optimieren – weil die Belohnung am vollen Lager hängt. Er tut genau, was die Kennzahl belohnt, und verfehlt den Sinn.</p>
+            </div>
+            <div class="card bad" style="border-left:4px solid var(--danger);">
+              <span class="tag bad">Fehlende Bremse</span>
+              <h3 style="margin-top:6px;">Läuft, bis das Budget alle ist</h3>
+              <p>Ein Loop ohne festes Ende läuft, bis das Budget erschöpft ist – und meldet das auch noch als Erfolg. Beide Fehler haben denselben Kern: Es fehlt ein Maßstab, den der Agent nicht selbst verbiegen kann.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BREMSEN -->
+      <section id="bremsen">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Die Bremse einbauen</div>
+            <h2>Prüfschritt, Stopp, Übergabe</h2>
+            <p>Ein guter Loop ist absichtlich begrenzt. Drei Bauteile machen den Unterschied.</p>
+          </div>
+          <div class="grid g3">
+            <div class="card good" style="border-left:4px solid var(--accent-2);">
+              <h3><span class="num">1</span>Beobachtbarer Maßstab</h3>
+              <p>Statt „bis ich zufrieden bin" eine Schwelle, ein Benchmark, eine Testreihe oder die Entscheidung eines Prüfers – etwas, das sich wiederholen lässt und nicht von der Laune des Agenten abhängt. Wer etwas optimiert, das die eigene Kennzahl überlisten könnte, trennt das Arbeitssignal vom Abnahmetest.</p>
+            </div>
+            <div class="card good" style="border-left:4px solid var(--accent-2);">
+              <h3><span class="num">2</span>Klarer Stopp</h3>
+              <p>Es gibt mehr Endzustände als Erfolg: nichts zu tun, blockiert, Freigabe nötig, Budget erschöpft, kein Fortschritt. Ohne gesetztes Limit ist der No-Progress-Stopp die ehrlichste Regel: Hört der Score auf zu steigen, übergibt der Loop an einen Menschen, statt ewig zwischen Bauen und Prüfen zu pendeln.</p>
+            </div>
+            <div class="card good" style="border-left:4px solid var(--accent-2);">
+              <h3><span class="num">3</span>Übergabe an Menschen</h3>
+              <p>Bei Aktionen, die sich nicht zurücknehmen lassen, in der Produktion landen, Geld bewegen oder nach außen gehen, braucht es eine Freigabe. Blockierte, erschöpfte und stagnierte Läufe sind keine erfolgreichen Läufe.</p>
+            </div>
+          </div>
+
+          <div class="grid g2" style="margin-top:26px; align-items:center;">
+            <div>
+              <h3>Der Prüfschritt gehört in eine getrennte Instanz</h3>
+              <p style="color:var(--muted);">
+                Wer baut, sollte nicht zugleich abnehmen. Die stärksten Loops geben die
+                Prüfung an eine eigene Instanz: einen zweiten Agenten, eine andere
+                Modellfamilie oder eine frische Session. Konkret im Code sieht ein
+                Gegencheck so aus: Der Prüfer nimmt den Fix probeweise zurück und schaut,
+                ob der Test wieder rot wird. Erst dieser mechanische Schritt macht aus
+                einer Meinung ein belastbares Pass oder Fail.
+              </p>
+              <div class="pill-list">
+                <span class="pill">Abschlussquote pro Aufgabe</span>
+                <span class="pill">Kosten pro Aufgabe</span>
+                <span class="pill">Eingriffsrate</span>
+                <span class="pill">Nachvollziehbare Spur</span>
+              </div>
+            </div>
+            <div class="card">
+              <span class="tag good">Endzustände</span>
+              <div class="pill-list" style="margin-top:12px;">
+                <span class="pill ok">Erfolg</span>
+                <span class="pill">Sauberer Leerlauf</span>
+                <span class="pill">Blockiert</span>
+                <span class="pill">Freigabe nötig</span>
+                <span class="pill">Budget erschöpft</span>
+                <span class="pill warn">Kein Fortschritt</span>
+              </div>
+              <p style="margin-top:14px;">Ein Fehler oder ein erschöpftes Budget wird <strong>nie</strong> als Erfolg gemeldet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRAXIS -->
+      <section id="praxis">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Wo Loops heute laufen</div>
+            <h2>Praxis statt Gedankenspiel</h2>
+            <p>
+              Am weitesten ist die Softwareentwicklung: Coding-Agenten arbeiten in
+              abgeschotteten Umgebungen mit dauerhaftem Zustand, fahren vom Ticket zum
+              Pull Request und lassen mehrere Agenten parallel arbeiten. Daneben gibt es
+              leisere Anwendungen – ein Loop hält die Doku aktuell, ein anderer wandelt
+              Kundenfeedback in geprüfte Fixes um. Auch dieser Text über Loops ließe sich
+              als Loop bauen: schreiben, glätten, mit einer Pre-Mortem auf Schwachstellen
+              abklopfen, mit einem Erstleser-Score auf Verständlichkeit prüfen, gezielt
+              nachbessern und stoppen, sobald der Score sitzt.
+            </p>
+          </div>
+          <div class="grid g3">
+            <div class="card"><h3>Engineering</h3><p>Doku-Sweep · Produktions-Fehler-Sweep · Ticket-zu-PR-reif · Testsuite-Tempo · Housekeeper · Repository-Aufräumen.</p></div>
+            <div class="card"><h3>Evaluation</h3><p>Quality-Streak · Devil's-Advocate · Self-Improving-Champion · Multi-LLM-Konvergenz · Promise-to-Proof.</p></div>
+            <div class="card"><h3>Betrieb</h3><p>Stale-Safe-Batch-Release · Produktionsdaten-Cleanup · Recovery-Proof · Customer-AI-Deployment · Living-Story.</p></div>
+            <div class="card"><h3>Content</h3><p>SEO/GEO-Sichtbarkeit · nächtlicher Changelog · Produkt-Update-Podcast.</p></div>
+            <div class="card"><h3>Design</h3><p>UI/UX-Score · Barrierefreiheits-Reparatur · Pixel-Safe-CSS-Trim · Cold-Load-Trimmer.</p></div>
+            <div class="card" style="background:var(--accent-soft); border-color:transparent;">
+              <h3>50 erprobte Muster</h3><p>Der mitgelieferte Katalog bündelt Abläufe für Entwicklung, Betrieb, Evaluation, Content und Design – fertig zum Anpassen an die eigenen Werkzeuge.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ECHTER LOOP -->
+      <section id="echt">
+        <div class="wrap">
+          <div class="grid g2" style="align-items:center;">
+            <div>
+              <div class="kicker">Woran man einen echten Loop erkennt</div>
+              <h2>Nicht alles, was „Agent" heißt, ist einer</h2>
+              <p style="color:var(--muted);">
+                Manche Anbieter kleben das Etikett auf umbenannte Chatbots, alte
+                Automatisierung oder einfache Assistenten – ein Phänomen, das als
+                <em>Agent Washing</em> bekannt ist. Von tausenden Anbietern mit
+                Agenten-Versprechen gelten nur rund 130 als echt. Ein verlässlicher
+                Test: Fehlt eines der vier Merkmale, hat man eine schicke Eingabemaske
+                vor sich, keinen Agenten.
+              </p>
+            </div>
+            <div class="grid" style="gap:12px;">
+              <div class="card"><h3><span class="num">✓</span>Plant Schritte</h3><p>Zerlegt die Aufgabe, statt eine einzige Antwort zu produzieren.</p></div>
+              <div class="card"><h3><span class="num">✓</span>Nutzt Werkzeuge kontrolliert</h3><p>Setzt Tools gezielt und im erlaubten Rahmen ein.</p></div>
+              <div class="card"><h3><span class="num">✓</span>Trägt einen Zustand</h3><p>Behält Kontext über mehrere Schritte hinweg.</p></div>
+              <div class="card"><h3><span class="num">✓</span>Liefert ein prüfbares Ergebnis</h3><p>Das Ergebnis lässt sich gegen einen Maßstab abnehmen.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REALITÄT -->
+      <section id="realitaet">
+        <div class="wrap">
+          <div class="grid g2" style="gap:36px;">
+            <div>
+              <div class="kicker">Realitätscheck</div>
+              <h2>Zwischen Hype und Handwerk</h2>
+              <p style="color:var(--muted);">
+                Die nüchterne Prognose: Bis Ende 2027 werden über 40&nbsp;Prozent der
+                Agentenprojekte eingestellt – wegen steigender Kosten, unklaren Nutzens
+                und schwacher Risikokontrolle. Viele Vorhaben sind Experimente, vom Hype
+                getrieben und am falschen Problem angesetzt.
+              </p>
+              <p style="color:var(--muted);">
+                Das Ende der Geschichte ist es nicht. Dieselben Prognosen erwarten, dass
+                bis 2028 ein Drittel der Unternehmenssoftware Agentenfunktionen mitbringt
+                – von unter einem Prozent im Jahr 2024 – und dass dann etwa 15&nbsp;Prozent
+                der alltäglichen Arbeitsentscheidungen automatisch fallen. Die
+                Aussortierwelle ist eher eine Korrektur als ein Abgesang: Sie trennt
+                Projekte mit echtem Prüfschritt von denen, die nie über die Demo
+                hinauskamen.
+              </p>
+            </div>
+            <div>
+              <div class="card" style="margin-bottom:18px;">
+                <h3>Der Unterbau reift</h3>
+                <p>Ein offener Standard verbindet Agenten mit Werkzeugen und Daten wie ein USB-C-Anschluss; Anfang 2026 gab es davon bereits über 10.000 Server. Parallel entsteht ein Protokoll für die Verständigung zwischen Agenten.</p>
+              </div>
+              <div class="card">
+                <h3>Aufsicht wird Pflicht</h3>
+                <p>Der Druck zur menschlichen Aufsicht wächst auch regulatorisch: Die Hochrisiko-Vorgaben des EU&nbsp;AI&nbsp;Act greifen, und in Kalifornien treten zum 1.&nbsp;Juli&nbsp;2026 zusätzliche Anforderungen in Kraft. Wer heute Loops baut, sollte das im Blick behalten.</p>
+              </div>
+            </div>
+          </div>
+          <p class="lead-claim" style="margin-top:40px;">
+            Die Macht eines Loops liegt nicht in seiner Autonomie, sondern in seiner
+            <span class="accent">Begrenzung</span>. Ein Loop, der ewig läuft, ist kein
+            Fortschritt. Ein Loop, der weiß, wann er fertig ist, schon.
+          </p>
+        </div>
+      </section>
+
+      <!-- SKILL -->
+      <section id="skill">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Der LoopCreatorSkill</div>
+            <h2>Erkennen, bauen, prüfen – mit einem Skill</h2>
+            <p>
+              <code class="inline">loop-creator</code> begleitet den ganzen Weg: von der
+              Frage, ob sich ein Loop überhaupt lohnt, über das Bauen bis zur Reparatur
+              eines bestehenden Loops. Er hält die Lieferung knapp – ein Satz Erklärung
+              plus ein kurzer, kopierfertiger Prompt.
+            </p>
+          </div>
+          <div class="grid g4">
+            <div class="card"><h3>Identifizieren</h3><p>Erkennt in Code und Verlauf, ob wiederkehrende Arbeit ein Loop werden sollte – oder besser eine Einmal-Aufgabe bleibt.</p></div>
+            <div class="card"><h3>Finden &amp; Anpassen</h3><p>Empfiehlt aus 50 Mustern das passende und stellt es auf die eigenen Werkzeuge, Schwellen und Verantwortlichen um.</p></div>
+            <div class="card"><h3>Bauen</h3><p>Stellt ein paar Fragen in Alltagssprache und liefert einen neuen, begrenzten Loop mit festem Check und klarem Stopp.</p></div>
+            <div class="card"><h3>Prüfen &amp; Reparieren</h3><p>Diagnostiziert als Loop-Doktor fehlende Bremse, Reward Hacking, Selbstabnahme und veralteten Zustand – und repariert minimal.</p></div>
+          </div>
+
+          <div class="grid g2" style="margin-top:30px; gap:24px; align-items:start;">
+            <div>
+              <h3>So nutzt man ihn</h3>
+              <p style="color:var(--muted);">Den Ordner <code class="inline">skills/loop-creator/</code> in das Skills-Verzeichnis des Agenten legen. Der Skill löst über seine Beschreibung automatisch aus, sobald es um Loops geht.</p>
+              <div class="pill-list">
+                <span class="pill">Claude Code · <code class="inline" style="background:transparent;border:none;padding:0;">/loop-creator</code></span>
+                <span class="pill">Cursor · Agent</span>
+                <span class="pill">Codex · /skills</span>
+              </div>
+            </div>
+            <div>
+              <h3>Loop Engineering in einem Satz</h3>
+              <blockquote class="prompt">Erledige die begrenzte Aufgabe. Nach jeder Änderung führe den verfügbaren Check aus und behalte nur Verbesserungen. Stoppe bei Ziel, Limit oder ausbleibendem Fortschritt. Frag vor jeder freigabepflichtigen Aktion.</blockquote>
+            </div>
+          </div>
+          <div class="cta-row" style="margin-top:30px;">
+            <a class="btn btn-primary" href="https://github.com/GodModeAI2025/LoopCreatorSkill">Projekt auf GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER / IMPRESSUM -->
+    <footer class="site" id="impressum">
+      <div class="wrap">
+        <h2>Impressum</h2>
+        <div class="imprint">
+          <div class="block">
+            <strong>Angaben gemäß § 5 DDG</strong><br />
+            Mark Zimmermann<br />
+            Ehlersstraße 18C<br />
+            76187 Karlsruhe<br />
+            Deutschland
+          </div>
+          <div class="block">
+            <strong>Kontakt</strong><br />
+            E-Mail: <a href="mailto:schiff_spritziger7j@icloud.com">schiff_spritziger7j@icloud.com</a>
+          </div>
+          <div class="block">
+            <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong><br />
+            Mark Zimmermann, Anschrift wie oben.
+          </div>
+          <div class="block">
+            <strong>Haftung für Inhalte</strong><br />
+            Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die
+            Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine
+            Gewähr übernommen werden.
+          </div>
+          <div class="block">
+            <strong>Haftung für Links</strong><br />
+            Für die Inhalte externer, von Dritten betriebener und verlinkter Seiten wird
+            keine Verantwortung übernommen. Für deren Inhalte sind ausschließlich die
+            jeweiligen Anbieter oder Betreiber verantwortlich.
+          </div>
+          <div class="block">
+            <strong>GitHub-Repositories</strong><br />
+            Sämtliche GitHub-Repositories unter meinem Account werden privat, ohne
+            kommerzielle Hintergedanken und ausschließlich für die Community erstellt.
+            Für deren Nutzung oder Umsetzung wird keine Haftung übernommen.
+          </div>
+          <div class="block">
+            <strong>Urheberrecht</strong><br />
+            © 2026 Mark Zimmermann. Die Inhalte unterliegen dem deutschen Urheberrecht.
+            Wo gekennzeichnet, gelten die jeweiligen Repository-Lizenzen.
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span><strong>LoopCreatorSkill</strong> — Loop Engineering für KI-Agenten</span>
+          <span>Lizenz: MIT</span>
+          <span>© 2026 Mark Zimmermann</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const KEY = "loopcreator-theme";
+        const root = document.documentElement;
+        const btn = document.getElementById("theme-toggle");
+        const icon = document.getElementById("theme-icon");
+        const sync = () => {
+          const dark = root.dataset.theme === "dark";
+          icon.textContent = dark ? "☀" : "☾";
+          btn.setAttribute("aria-label", dark ? "Zu hellem Design wechseln" : "Zu dunklem Design wechseln");
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", dark ? "#0c0e11" : "#ffffff");
+        };
+        sync();
+        btn.addEventListener("click", () => {
+          root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+          try { localStorage.setItem(KEY, root.dataset.theme); } catch {}
+          sync();
+        });
+      })();
+    </script>
+  </body>
+</html>
