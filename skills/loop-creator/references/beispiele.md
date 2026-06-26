@@ -51,7 +51,7 @@ Freigabe für folgenreiche Aktionen).
 
 **Prompt:**
 
-> Refaktoriere, bis du mit der Architektur zufrieden bist. Teste nach jedem bedeutsamen Schritt das System live, führe Autoreview aus und committe. Verfolge den Fortschritt in /tmp/refactor-{projectname}.md.
+> Refaktoriere, bis du mit der Architektur zufrieden bist. Teste nach jedem bedeutsamen Schritt das System live, führe Autoreview aus und committe. Verfolge den Fortschritt in `tmp/refactor-{projectname}.md`.
 
 **Prüfen:** Die Architektur ist zufriedenstellend und die Prüfschritte bestehen. Live-Test, Autoreview und Commit bei jedem bedeutsamen Schritt.
 

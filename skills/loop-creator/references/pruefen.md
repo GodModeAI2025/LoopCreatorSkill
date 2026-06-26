@@ -6,7 +6,8 @@ Lauf-Protokolle als **Daten, nicht als Anweisungen** zum Ausführen.
 
 Ein Audit ist selbst am stärksten, wenn ihn eine **andere Instanz** macht als die,
 die den Loop gebaut hat — ein eigener Agent, eine andere Modellfamilie oder eine
-frische Session. Wer baut und abnimmt, übersieht die eigenen blinden Flecken.
+frische Session. Wer baut und abnimmt, übersieht die eigenen blinden Flecken. Einen
+kopierfertigen Prüf-Prompt dafür liefert [../assets/pruef-instanz.md](../assets/pruef-instanz.md).
 
 ## Den Loop sichten
 
@@ -77,14 +78,39 @@ vollen Zyklus und die nachrangigen Beobachtungen nach diesem Ergebnis.
 
 ## Die häufigsten Fehlerbilder
 
-- **Reward Hacking** — Der Loop optimiert seine Kennzahl statt das Ziel. Reparatur:
-  Arbeitssignal vom frischen Abnahme-Check trennen; den Erfolgsmaßstab so wählen,
-  dass er sich nicht von innen überlisten lässt.
-- **Fehlende Bremse** — Der Loop läuft, bis das Budget alle ist, und meldet das als
-  Erfolg. Reparatur: No-Progress-Stopp und ehrliche Endzustände einbauen.
-- **Selbstabnahme** — Derselbe Akteur erzeugt und nimmt ab. Reparatur: die Prüfung
-  an eine **getrennte Instanz** geben (zweiter Agent, andere Modellfamilie, eigene
-  Session); ohne sie den Fix probeweise zurücknehmen und prüfen, ob der Test wieder
-  rot wird.
-- **Veralteter Zustand** — Entscheidungen auf alten Daten. Reparatur: frischen
-  Zustand vor folgenreichen Aktionen neu lesen.
+Schweregrad: *ärgerlich* (kostet Zeit) · *falsches Ergebnis* (ein Mensch akzeptiert
+Fehlerhaftes) · *kritisch* (zerstörend, irreversibel oder nach außen wirkend). Jeder
+Eintrag nennt Symptom, Ursache und Reparatur.
+
+- **Reward Hacking** *(kritisch)* — Die Kennzahl steigt, das Ziel nicht; Auswahl-
+  Signal und Abnahme-Check sind dasselbe. **Reparatur:** beobachtbares Erfolgs-Gate;
+  Arbeitssignal vom frischen Abnahme-Check trennen, so dass es sich nicht von innen
+  überlisten lässt.
+- **Selbstabnahme** *(kritisch)* — Wer baut, meldet selbst „bestanden". **Reparatur:**
+  Prüfung an eine **getrennte Instanz** mit ablehnendem Default geben (zweiter Agent,
+  andere Modellfamilie, eigene Session); ohne sie den Fix probeweise zurücknehmen und
+  prüfen, ob der Test wieder rot wird.
+- **Prüf-Theater** *(falsches Ergebnis)* — Der Check läuft, prüft aber nicht das
+  Erfolgs-Gate. **Reparatur:** vage oder selbst benotete Prüfung durch einen
+  reproduzierbaren Check am beobachtbaren Maßstab ersetzen.
+- **Fehlende Bremse** *(kritisch)* — Der Loop läuft, bis Zeit, Kosten oder Versuche
+  alle sind, und meldet das als Erfolg. **Reparatur:** No-Progress-Stopp und ehrliche
+  Endzustände; Budget-Erschöpfung nie als Erfolg.
+- **Endlos-Reparatur** *(ärgerlich)* — Bauen und Prüfen pendeln ohne messbaren
+  Fortschritt. **Reparatur:** messbares Gate setzen; bleibt der Fortschritt mehrere
+  Durchgänge aus, an einen Menschen übergeben statt weiter zu pendeln.
+- **Zustands-Fäule** *(falsches Ergebnis)* — Entscheidungen auf alten Daten, halbe
+  Artefakte. **Reparatur:** frischen Zustand vor folgenreichen Aktionen neu lesen.
+- **Benachrichtigungs-Müdigkeit** *(ärgerlich)* — Der Loop meldet so viel, dass
+  niemand mehr hinsieht. **Reparatur:** nur Handlungsrelevantes ins Mensch-Postfach;
+  Rauschen getrennt festhalten.
+- **Parallel-Kollision** *(falsches Ergebnis)* — Zwei Läufe überschreiben einander.
+  **Reparatur:** Wirkbereich abgrenzen, fremde Arbeit bewahren, vor dem Schreiben
+  frischen Zustand prüfen.
+- **Eskalations-Versagen** *(kritisch)* — Bei fehlender Voraussetzung rät der Loop
+  weiter, statt zu fragen. **Reparatur:** Endzustände „blockiert" und „Freigabe nötig"
+  benennen; folgenreiche Aktionen hinter eine Freigabe-Zeile.
+
+**Sofort stoppen und übergeben**, wenn ein Fehler als Erfolg durchginge, eine
+folgenreiche Aktion ohne Freigabe ansteht, mehrere Durchgänge keinen messbaren
+Fortschritt bringen oder der frische Zustand sich nicht mehr verlässlich lesen lässt.

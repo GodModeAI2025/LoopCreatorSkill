@@ -14,7 +14,9 @@ keine Erlaubnis für endlose Autonomie. Die Stärke eines Loops steckt im
 **Prüfschritt** und im **klaren Stopp** — nicht in möglichst viel Selbstständigkeit.
 Die verlässlichsten Agenten-Systeme sind nicht die autonomsten, sondern die, die
 wissen, wann sie aufhören oder einen Menschen fragen müssen. Dieser Gedanke trägt
-jede Entscheidung im Skill.
+jede Entscheidung im Skill. Jeder ungeprüfte Durchgang häuft **Verständnisschuld**
+an — Ergebnisse, die schneller entstehen, als ein Mensch sie nachvollzieht; der
+Prüfschritt ist genau das, was diese Schuld wieder abträgt.
 
 ## Was ein Loop ist (und was nicht)
 
@@ -33,6 +35,11 @@ Jeder brauchbare Loop beantwortet vier Fragen:
 Wenn ein frischer Durchgang die nächste Aktion **nicht** ändern kann, ist es kein
 Loop, sondern eine Einmal-Aufgabe. Empfiehl dann genau das — erfinde keinen Loop,
 nur weil das Wort gefallen ist.
+
+Ein einmaliges Setup ist genauso wenig ein Loop: Werkzeuge einrichten, einen Agenten
+konfigurieren oder einen Lauf anstoßen ist das **Gerüst**, nicht der Regelkreis. Ein
+Loop entsteht erst, wo ein wiederkehrender Auslöser, ein über Durchgänge getragener
+Zustand und eine feste Prüfkette zusammenkommen.
 
 ## Den Request einordnen
 
@@ -62,6 +69,8 @@ Bei einem vagen Request beginne mit: **„Was soll der Agent erledigen?"**
 Bau jeden Loop um diese sechs Schritte:
 
 1. **Beobachten** — Frischen Zustand lesen und die vereinbarten Belege sammeln.
+   Halte diesen Durchgang bewusst billig; steht nichts an, geh früh in den sauberen
+   Leerlauf, statt voll zu arbeiten oder Arbeit zu erfinden.
 2. **Wählen** — Aus expliziten Kriterien die wertvollste Aktion im erlaubten Rahmen
    auswählen.
 3. **Handeln** — Eine begrenzte, umkehrbare Änderung machen oder einen Kandidaten
@@ -84,6 +93,24 @@ Es gibt mehr Enden als „Erfolg". Definiere die relevanten ausdrücklich:
 
 Melde einen Fehler oder ein erschöpftes Budget **niemals als Erfolg**.
 
+## Reifestufen — wie viel Autonomie der Loop verdient
+
+Autonomie ist kein Schalter, sondern eine Leiter. Beginne unten und steig nur auf,
+wenn ein belegter Durchgang es rechtfertigt — nie auf Verdacht. Keine Zahlen-Noten,
+nur ein benannter Stand:
+
+- **Entwurf** — Der Loop ist beschrieben, aber noch nie gelaufen.
+- **Nur Bericht** — Er beobachtet und schlägt vor, ändert aber nichts; ein Mensch
+  entscheidet. Standard für den ersten echten Lauf.
+- **Assistiert** — Er handelt in engem Rahmen, doch jeder folgenreiche Schritt wird
+  von einer getrennten Instanz geprüft oder freigegeben.
+- **Unbeaufsichtigt** — Er läuft ohne Begleitung. Das verdient sich ein Loop erst
+  nach mehreren belegten, sauberen Durchgängen — und nie für folgenreiche,
+  irreversible oder nach außen gehende Aktionen ohne Freigabe.
+
+Ein höherer Stand muss durch festgehaltene Läufe gedeckt sein, nicht durch
+Zuversicht. Im Zweifel eine Stufe tiefer bleiben.
+
 ## Sicherheits-Leitplanken
 
 Diese Regeln verhindern die typischen Arten, auf die Loops scheitern:
@@ -97,9 +124,11 @@ Diese Regeln verhindern die typischen Arten, auf die Loops scheitern:
   Ranking oder etwas optimiert, das seine eigene Kennzahl überlisten kann, trenne
   das Signal zum Auswählen vom frischen Abnahme-Check. Sonst lernt der Agent, den
   Test zu bestehen, statt die Aufgabe zu lösen.
-- **Unabhängige Verifikation durch eine getrennte Instanz.** Wer baut, sollte nicht
-  zugleich abnehmen. Lass den Prüfschritt — wo immer möglich — von einer **eigenen
-  Instanz** erledigen: einem zweiten Agenten, einer anderen Modellfamilie, einer
+- **Unabhängige Verifikation durch eine getrennte Instanz.** Das ist die wichtigste
+  strukturelle Bedingung für Verlässlichkeit. Wer baut, sollte nicht zugleich
+  abnehmen — und die Prüfinstanz **startet ablehnend**: Sie sucht aktiv Gründe für
+  Zurückweisung und akzeptiert erst, wenn der Beleg sie überzeugt. Lass den
+  Prüfschritt — wo immer möglich — von einer **eigenen Instanz** erledigen: einem zweiten Agenten, einer anderen Modellfamilie, einer
   eigenen Session oder mindestens einem frischen Kontext ohne Wissen über die
   Bau-Entscheidungen. Das senkt Selbstabnahme und Overfitting auf die eigene
   Kennzahl. Geht keine getrennte Instanz, ersetze sie durch einen mechanischen
@@ -113,9 +142,28 @@ Diese Regeln verhindern die typischen Arten, auf die Loops scheitern:
 - **Frischen Zustand lesen.** Lies den aktuellen Zustand vor folgenreichen
   Aktionen neu. Liefere keinen veralteten Code, keine halben Artefakte und keine
   Annahmen aus einem früheren Durchgang.
+- **Aufstieg nur mit Beleg.** Mehr Autonomie — von Nur-Bericht zu eigenständigem
+  Handeln — verdient sich ein Loop erst nach mindestens einem echten, festgehaltenen
+  Durchgang mit Zeitstempel. Beleg ist der protokollierte Lauf, nicht die bloße
+  Existenz der Loop-Dateien.
 - **Fremde Arbeit schützen.** Bewahre unbeteiligte Änderungen. Verlange
   ausdrückliche Freigabe für zerstörende, unumkehrbare, Produktions-, finanzielle,
-  datenschutz-sensible oder nach außen gehende Aktionen.
+  datenschutz-sensible oder nach außen gehende Aktionen. Als anpassbares Beispiel
+  besonders geschützter Zonen (an den Rahmen anpassen, nicht als feste Wahrheit
+  nehmen): Geheimnisse und `.env`, Authentifizierung, Zahlungen, Infrastruktur und
+  Migrationen, personenbezogene Daten, Abhängigkeits-Upgrades und Änderungen quer
+  über viele Dateien.
+
+Als Schnellübersicht — typische Gefahr und die Leitplanke dagegen:
+
+| Gefahr | Gegenmaßnahme |
+| --- | --- |
+| Reward Hacking (Kennzahl statt Ziel optimiert) | Beobachtbares Erfolgs-Gate; Arbeitssignal vom Abnahme-Check trennen |
+| Selbstabnahme | Prüfung in getrennter Instanz, ablehnender Default; sonst mechanischer Gegencheck |
+| Fehlende Bremse | No-Progress-Stopp; ehrliche Endzustände statt Fehler-als-Erfolg |
+| Veralteter Zustand | Frischen Zustand vor folgenreichen Aktionen neu lesen |
+| Übergriff auf fremde Arbeit | Unbeteiligtes bewahren; Freigabe-Grenze für folgenreiche Aktionen |
+| Zu früher Aufstieg | Mehr Autonomie nur mit belegtem Durchgang (siehe Reifestufen) |
 
 Einen Loop zu entwerfen erlaubt nicht, ihn scharf zu schalten, die Produktion zu
 ändern oder Nachrichten zu verschicken. Aktiviere ihn erst, wenn der Nutzer es will.
@@ -203,4 +251,5 @@ fast immer einen fehlenden Check, eine unklare Grenze oder eine zu vage Stopp-Re
 - Wann lohnt sich ein Loop, Discovery aus Code/Verlauf: [references/identifizieren.md](references/identifizieren.md)
 - Design-Interview und Feedback-Zyklus im Detail: [references/bauen.md](references/bauen.md)
 - Loop-Doktor (Audit & Reparatur): [references/pruefen.md](references/pruefen.md)
+- Kopierfertiger Prüf-Prompt für eine getrennte Instanz: [assets/pruef-instanz.md](assets/pruef-instanz.md)
 - 50 erprobte Loops als anpassbare Muster: [references/beispiele.md](references/beispiele.md)

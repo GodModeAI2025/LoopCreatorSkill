@@ -38,7 +38,8 @@ skills/loop-creator/
 │   ├── pruefen.md            # Loop-Doktor: Audit & Reparatur
 │   └── beispiele.md          # 50 Loops als anpassbare Muster nach Kategorie
 └── assets/
-    └── loop-vorlage.md       # Ausfüll-Vorlage für einen neuen Loop
+    ├── loop-vorlage.md       # Ausfüll-Vorlage für einen neuen Loop
+    └── pruef-instanz.md      # Kopierfertiger Prüf-Prompt für eine getrennte Instanz
 index.html                    # Landingpage (Loop Engineering erklärt)
 evals/evals.json              # Beispiel-Testfälle für die Skill-Qualität
 ```

@@ -37,6 +37,10 @@ Prüfen → Festhalten → Wiederholen/Stoppen. Wende dabei diese Regeln an:
 - Definiere die relevanten Endzustände: Erfolg, sauberer Leerlauf, blockiert,
   Freigabe nötig, erschöpft, stagniert. Melde einen Fehler oder ein erschöpftes
   Budget nie als Erfolg.
+- **Beginne auf der Stufe „Nur Bericht".** Standard für den ersten echten Lauf ist:
+  beobachten und vorschlagen, ein Mensch entscheidet. Höhere Reifestufen (siehe die
+  Reifestufen in `SKILL.md`) verdient sich der Loop erst mit belegten, sauberen
+  Durchgängen — nicht auf Verdacht.
 - Nimm ein vom Nutzer gesetztes Limit, wenn es eines gibt. Sonst nutze einen
   **No-Progress-Stopp** statt eine Zeit-, Iterations-, Kosten-, Versuchs- oder
   Umfangsgrenze zu erfinden. Nenne einen Eskalations-Verantwortlichen nur, wenn der

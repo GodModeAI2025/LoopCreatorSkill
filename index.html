@@ -326,7 +326,9 @@
               Zustand ändert, und richtet den nächsten Schritt danach aus. Ohne diese
               Rückmeldung bleibt ein Sprachmodell ein Textgenerator. Mit ihr wird daraus
               ein System, das Ergebnisse vergleicht, statt sich auf das eigene
-              Urteil zu verlassen.
+              Urteil zu verlassen. Auch ein einmaliges Setup ist noch kein Loop: erst ein
+              wiederkehrender Auslöser, ein getragener Zustand und eine feste Prüfkette
+              machen aus dem Gerüst einen Regelkreis.
             </p>
           </div>
 
@@ -367,7 +369,7 @@
             </p>
           </div>
           <div class="cycle">
-            <div class="card step"><span class="num">1</span><h3>Beobachten</h3><p>Frischen Zustand lesen und die vereinbarten Belege sammeln.</p></div>
+            <div class="card step"><span class="num">1</span><h3>Beobachten</h3><p>Frischen Zustand lesen und die vereinbarten Belege sammeln. Der Pass bleibt bewusst billig – ist nichts zu tun, früh sauber aussteigen.</p></div>
             <div class="card step"><span class="num">2</span><h3>Wählen</h3><p>Aus expliziten Kriterien die wertvollste Aktion im erlaubten Rahmen auswählen.</p></div>
             <div class="card step"><span class="num">3</span><h3>Handeln</h3><p>Eine begrenzte, umkehrbare Änderung machen oder einen Kandidaten erzeugen.</p></div>
             <div class="card step"><span class="num">4</span><h3>Prüfen</h3><p>Denselben Abnahme-Check unter gleichen Bedingungen laufen lassen.</p></div>
@@ -443,11 +445,24 @@
             </div>
           </div>
 
+          <div class="section-head" style="margin-top:40px;">
+            <h3 style="font-size:1.15rem;">Reifestufen: wie viel Autonomie der Loop verdient</h3>
+            <p>Autonomie ist kein Schalter, sondern eine Leiter. Aufsteigen darf ein Loop nur, wenn ein belegter, sauberer Durchgang es deckt – nie auf Verdacht.</p>
+          </div>
+          <div class="grid g4">
+            <div class="card"><h3>Entwurf</h3><p>Beschrieben, aber noch nie gelaufen.</p></div>
+            <div class="card"><h3>Nur Bericht</h3><p>Beobachtet und schlägt vor, ändert nichts. Standard für den ersten echten Lauf.</p></div>
+            <div class="card"><h3>Assistiert</h3><p>Handelt in engem Rahmen; jeder folgenreiche Schritt wird geprüft oder freigegeben.</p></div>
+            <div class="card"><h3>Unbeaufsichtigt</h3><p>Läuft ohne Begleitung – erst nach mehreren belegten, sauberen Durchgängen, nie für Irreversibles ohne Freigabe.</p></div>
+          </div>
+
           <div class="grid g2" style="margin-top:26px; align-items:center;">
             <div>
               <h3>Der Prüfschritt gehört in eine getrennte Instanz</h3>
               <p style="color:var(--muted);">
-                Wer baut, sollte nicht zugleich abnehmen. Die stärksten Loops geben die
+                Jeder ungeprüfte Durchgang häuft <strong>Verständnisschuld</strong> an –
+                Ergebnisse, die schneller entstehen, als ein Mensch sie nachvollzieht;
+                der Prüfschritt trägt sie ab. Wer baut, sollte nicht zugleich abnehmen. Die stärksten Loops geben die
                 Prüfung an eine eigene Instanz: einen zweiten Agenten, eine andere
                 Modellfamilie oder eine frische Session. Konkret im Code sieht ein
                 Gegencheck so aus: Der Prüfer nimmt den Fix probeweise zurück und schaut,

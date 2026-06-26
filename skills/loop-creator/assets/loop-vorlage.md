@@ -10,6 +10,7 @@ nicht braucht; erfinde keine Werte, die du nicht aus dem Rahmen kennst.
 - **Name:** [kurz und sprechend]
 - **Ziel (ein Satz):** [das Ergebnis, messbar oder prüfbar formuliert]
 - **Kategorie:** Engineering · Evaluation · Operations · Content · Design
+- **Reifestufe:** Entwurf · Nur Bericht · Assistiert · Unbeaufsichtigt — starte unten
 
 ## Der Regelkreis
 
@@ -19,7 +20,30 @@ nicht braucht; erfinde keine Werte, die du nicht aus dem Rahmen kennst.
 - **Handeln:** [die eine begrenzte, umkehrbare Änderung pro Durchgang]
 - **Prüfen:** [der feste Abnahme-Check unter gleichen Bedingungen — wer prüft?
   möglichst eine getrennte Instanz]
-- **Festhalten:** [was wird in der Zustandsdatei `tmp/<datei>.md` gespeichert]
+- **Festhalten:** [was wird in der Zustandsdatei `tmp/<datei>.md` gespeichert — Struktur unten]
+
+Eine kopierfertige Struktur für `tmp/<datei>.md` (anpassbares Beispiel; kürze, was der
+Loop nicht braucht). Der Zeitstempel „Letzter Lauf" ist zugleich der Beleg, der einen
+Aufstieg auf eine höhere Reifestufe deckt:
+
+```markdown
+# <Loop-Name> — Zustand
+
+Letzter Lauf: <Zeitstempel>
+Stand: Entwurf | Nur Bericht | Assistiert | Unbeaufsichtigt
+
+## Hohe Priorität
+- [was als Nächstes dran ist]
+
+## Beobachtungsliste
+- [offene Punkte, beobachtet, aber noch nicht bearbeitet]
+
+## In diesem Lauf ignoriert (Rauschen)
+- [bewusst übersprungen, mit kurzem Grund]
+
+## Mensch-Postfach
+- [was eine menschliche Entscheidung oder Freigabe braucht]
+```
 
 ## Grenzen und Enden
 
