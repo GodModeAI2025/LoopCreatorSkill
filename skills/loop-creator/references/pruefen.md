@@ -30,9 +30,14 @@ kopierfertigen Prüf-Prompt dafür liefert [../assets/pruef-instanz.md](../asset
      Arbeit fortsetzen muss;
    - unklare Endzustände (Erfolg, Leerlauf, blockiert, Freigabe nötig, erschöpft,
      stagniert), wo sie relevant sind.
-4. **Belege verknüpfen.** Wenn Lauf-Belege vorliegen, verbinde jeden Befund mit dem
-   beobachteten Fehler. Sonst kennzeichne das Ergebnis als Design-Audit, statt zu
-   behaupten, der Loop sei in der Praxis gescheitert.
+4. **Belege verknüpfen und Ursache einordnen.** Liegen Lauf-Belege vor, verbinde jeden
+   Befund mit dem beobachteten Fehler und ordne vor jeder Reparatur die Ursache ein:
+   Loop-**Design**, **Ausführungsentscheidung**, **Umgebung oder Werkzeug** oder ein
+   **unrealistisches oder verändertes Ziel**. Nur eine Design-Ursache rechtfertigt eine
+   Änderung am Loop; ein Umgebungs- oder Werkzeugfehler nie — dann lautet das Urteil
+   „Bereit" mit benannter Ursache statt „Reparatur nötig". Leite aus einem einzelnen Lauf
+   kein wiederkehrendes Muster ab. Liegen keine Lauf-Belege vor, kennzeichne das Ergebnis
+   als Design-Audit, statt zu behaupten, der Loop sei in der Praxis gescheitert.
 
 Vergib **keine** Zahlennote. Bemängle keine fehlende Zeit-, Iterations-, Kosten-
 oder Versuchsgrenze, wenn ein klarer No-Progress-Stopp genügt. Erfinde keine

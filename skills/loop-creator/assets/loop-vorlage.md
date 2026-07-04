@@ -23,14 +23,21 @@ nicht braucht; erfinde keine Werte, die du nicht aus dem Rahmen kennst.
 - **Festhalten:** [was wird in der Zustandsdatei `tmp/<datei>.md` gespeichert — Struktur unten]
 
 Eine kopierfertige Struktur für `tmp/<datei>.md` (anpassbares Beispiel; kürze, was der
-Loop nicht braucht). Der Zeitstempel „Letzter Lauf" ist zugleich der Beleg, der einen
-Aufstieg auf eine höhere Reifestufe deckt:
+Loop nicht braucht). Der Zeitstempel „Letzter Lauf" genügt allein nicht als
+Beleg — erst der protokollierte Durchgang unten (Aktion, Beleg, Ergebnis) deckt
+einen Aufstieg auf eine höhere Reifestufe:
 
 ```markdown
 # <Loop-Name> — Zustand
 
 Letzter Lauf: <Zeitstempel>
 Stand: Entwurf | Nur Bericht | Assistiert | Unbeaufsichtigt
+
+## Letzter Durchgang
+- Aktion: [die eine begrenzte Änderung dieses Durchgangs]
+- Beleg: [Abnahme-Check und Bedingungen, reproduzierbar]
+- Ergebnis: [Erfolg | sauberer Leerlauf | blockiert | Freigabe nötig | Budget erschöpft | kein Fortschritt]
+- Restarbeit: [was der nächste Durchgang aufnimmt]
 
 ## Hohe Priorität
 - [was als Nächstes dran ist]
