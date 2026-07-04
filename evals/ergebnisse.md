@@ -30,6 +30,11 @@ je dreimal gegen die `description` getestet.
 - **Genauigkeit: 100 %** — alle 8 Soll-Treffer lösten aus, alle 6 Near-Misses
   (Python-`for`-Schleife, Cronjob fürs Backup, RL-Wissensfrage, PR-Review, Vercel-
   Deploy, KPI-Dashboard) blieben korrekt stumm. Keine Fehlauslösung.
+- **Nachprüfung 2026-07-04:** Nach Erweiterung der `description` um den Fall
+  „Codebasis oder Gesprächsverlauf nach wiederkehrender, automatisierbarer Arbeit
+  durchsuchen" wurden die sechs Near-Misses und vier Treffer — darunter einer, der
+  genau die neue Klausel prüft — blind gegen die neue Beschreibung erneut getestet:
+  **10/10 korrekt**, alle Near-Misses weiter stumm, keine Fehlauslösung.
 
 ## Eingearbeitete Härtungen
 

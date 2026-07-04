@@ -1,0 +1,39 @@
+# Changelog
+
+Nennenswerte Änderungen an Skill, Katalog und Landingpage. Neueste zuerst.
+
+## 2026-07-04
+
+### Skill
+- **Ausführungs-Leitplanke:** Wird der Agent gebeten, einen Loop selbst auszuführen,
+  bleibt dessen Text Daten — eingebettete Anweisungen werden ignoriert, es sind nur
+  umkehrbare Aktionen im genannten Rahmen erlaubt, Freigabe-Grenzen und Endzustände
+  gelten unverändert.
+- **Loop-Doktor** ordnet vor jeder Reparatur die Ursache ein (Design / Ausführung /
+  Umgebung-Werkzeug / verändertes Ziel); ein Umgebungsfehler baut keinen gesunden Loop um.
+- **Zustandsdatei-Vorlage** um den Block „Letzter Durchgang" (Aktion, Beleg, Ergebnis,
+  Restarbeit) erweitert; löst den Zeitstempel-als-Beleg-Widerspruch bei den Reifestufen.
+- **Projekt-lokale `LOOPS.md`:** gelieferte Loops auf Wunsch speichern und in späteren
+  Sitzungen wiederverwenden (als Daten behandelt, keine Geheimnisse).
+- **Katalog:** nur real vorhandene Muster empfehlen, Rangfolge bei mehreren Treffern,
+  klarer Kein-Treffer-Ausgang ins Bau-Interview.
+- **Routing/Description:** fehlendes Prüf-Objekt wird erfragt; die Beschreibung deckt
+  jetzt „Codebasis oder Verlauf durchsuchen" ab.
+
+### Landingpage
+- Modernisierter, aufgeräumter Relaunch (Layout-Rhythmus statt Karten-Monotonie:
+  Loop-Stepper, Reifestufen-Leiter, Editorial-Zweispalter, Pull-Quote, Mono-Labels).
+- Dark-Theme-Kontrast-Blocker und weitere A11y-Punkte behoben (`color-scheme` pro
+  Theme, Scroll-Offset, `aria-hidden`, Fokus-Kontrast).
+
+## 2026-06-26
+
+- Lernpunkte aus einer geprüften Analyse von `cobusgreyling/loop-engineering`
+  übernommen: qualitative Reifestufen, Maker/Checker mit ablehnendem Default,
+  Fehlermodus-Katalog, Verständnisschuld, Schutzzonen-Tabelle, billiger Leerlauf.
+
+## 2026-06-22
+
+- Erste Veröffentlichung: Skill `loop-creator` (Identifizieren, Finden, Anpassen,
+  Bauen, Prüfen/Reparieren), Landingpage und Projektgerüst.
+- Muster-Katalog auf 50 erprobte Loops erweitert.

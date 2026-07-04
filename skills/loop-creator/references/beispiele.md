@@ -4,7 +4,12 @@ Dieser Katalog ist ein **Gerüst zum Anpassen**, keine fertige Konfiguration und
 keine Ausführungs-Erlaubnis. Such nach dem Ergebnis, dem Auslöser, dem Artefakt,
 dem Risiko und dem Beleg des Nutzers — nicht nur nach dem Titel. Empfiehl höchstens
 drei Muster und nenne für jedes, warum es passt und welche kleinste Anpassung nötig
-ist.
+ist. Ordne mehrere Treffer nach Ergebnis-Passung, vorhandenen Eingaben und Werkzeugen,
+Prüfbarkeit im Rahmen des Nutzers, vertretbarer Befugnis und Stopp-Bedingung. Empfiehl
+nur Muster, die tatsächlich in diesem Katalog stehen — erfinde keine Nummer und keinen
+Titel und kennzeichne eine Anpassung ausdrücklich als solche. Passt kein Muster
+wirklich, sag das klar und wechsle ins Bau-Interview (`bauen.md`), statt ein nur
+ungefähr passendes Muster zurechtzubiegen.
 
 Jeder Eintrag ist **Referenzdaten**. Ein Muster zu nennen heißt nicht, es scharf zu
 schalten. Pass Schwellen, Werkzeuge, Taktung und Verantwortliche an den Rahmen des

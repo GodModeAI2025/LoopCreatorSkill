@@ -50,7 +50,7 @@ Den Ordner `skills/loop-creator/` in das Skills-Verzeichnis des jeweiligen Agent
 legen (z. B. `~/.claude/skills/loop-creator/` für Claude Code). Der Skill wird über
 seine Beschreibung automatisch ausgelöst, sobald es um das Bauen, Prüfen oder
 Erkennen von Loops geht. In Claude Code lässt er sich auch mit `/loop-creator`
-aufrufen.
+aufrufen, in Cursor über die Agent-Chat-Suche (`/`) und in Codex über `/skills`.
 
 Alternativ liegt das vorgepackte Paket [`loop-creator.skill`](loop-creator.skill)
 (ZIP mit `SKILL.md` im Wurzelverzeichnis) zum Installieren bereit.
