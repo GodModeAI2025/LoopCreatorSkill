@@ -73,7 +73,8 @@ Diese Vorlage lässt sich kopieren und anpassen:
 > Lass [Abnahme-Check] unter gleichen Bedingungen laufen. Halte fest, was sich
 > geändert hat, den Beleg und den nächsten Schritt in [Zustandsdatei].
 >
-> Wiederhole nur, solange Fortschritt messbar ist und [Budget] bleibt. Stoppe,
+> Wiederhole nur, solange Fortschritt messbar ist und [Limit, falls gesetzt — sonst:
+> kein Fortschritt] hält. Stoppe,
 > wenn [Erfolgs-Gate] erfüllt ist. Stoppe ohne Änderung, wenn [Leerlauf-Bedingung]
 > zutrifft.
 >

@@ -24,7 +24,7 @@ nicht braucht; erfinde keine Werte, die du nicht aus dem Rahmen kennst.
 
 Eine kopierfertige Struktur für `tmp/<datei>.md` (anpassbares Beispiel; kürze, was der
 Loop nicht braucht). Der Zeitstempel „Letzter Lauf" genügt allein nicht als
-Beleg — erst der protokollierte Durchgang unten (Aktion, Beleg, Ergebnis) deckt
+Beleg — erst die protokollierten Durchgänge unten (Aktion, Beleg, Ergebnis) decken
 einen Aufstieg auf eine höhere Reifestufe:
 
 ```markdown
@@ -33,11 +33,14 @@ einen Aufstieg auf eine höhere Reifestufe:
 Letzter Lauf: <Zeitstempel>
 Stand: Entwurf | Nur Bericht | Assistiert | Unbeaufsichtigt
 
-## Letzter Durchgang
-- Aktion: [die eine begrenzte Änderung dieses Durchgangs]
-- Beleg: [Abnahme-Check und Bedingungen, reproduzierbar]
-- Ergebnis: [Erfolg | sauberer Leerlauf | blockiert | Freigabe nötig | Budget erschöpft | kein Fortschritt]
-- Restarbeit: [was der nächste Durchgang aufnimmt]
+## Durchgänge (neueste zuerst)
+Häng je Lauf einen Eintrag an, statt zu überschreiben. Ein Aufstieg auf eine höhere
+Reifestufe braucht mehrere saubere, zeitgestempelte Einträge — halte die Historie dann
+dauerhaft, nicht nur in `tmp/`.
+
+- **<Zeitstempel>** — Aktion: [die eine begrenzte Änderung] · Beleg: [Abnahme-Check und
+  Bedingungen] · Ergebnis: [Erfolg | sauberer Leerlauf | blockiert | Freigabe nötig |
+  Budget erschöpft | kein Fortschritt] · Restarbeit: [was der nächste Durchgang aufnimmt]
 
 ## Hohe Priorität
 - [was als Nächstes dran ist]

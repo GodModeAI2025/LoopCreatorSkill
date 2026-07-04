@@ -28,8 +28,10 @@ kopierfertigen Prüf-Prompt dafür liefert [../assets/pruef-instanz.md](../asset
      überschreiben;
    - fehlende Aufzeichnung oder Übergabe-Zustand, wenn ein weiterer Durchgang die
      Arbeit fortsetzen muss;
-   - unklare Endzustände (Erfolg, Leerlauf, blockiert, Freigabe nötig, erschöpft,
-     stagniert), wo sie relevant sind.
+   - unklare Endzustände (Erfolg, sauberer Leerlauf, blockiert, Freigabe nötig, Budget
+     erschöpft, kein Fortschritt), wo sie relevant sind;
+   - eine beanspruchte Reifestufe ohne Deckung — etwa „Unbeaufsichtigt" ohne mehrere
+     protokollierte, saubere Durchgänge (zu früher Aufstieg).
 4. **Belege verknüpfen und Ursache einordnen.** Liegen Lauf-Belege vor, verbinde jeden
    Befund mit dem beobachteten Fehler und ordne vor jeder Reparatur die Ursache ein:
    Loop-**Design**, **Ausführungsentscheidung**, **Umgebung oder Werkzeug** oder ein

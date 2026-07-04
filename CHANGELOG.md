@@ -19,6 +19,9 @@ Nennenswerte Änderungen an Skill, Katalog und Landingpage. Neueste zuerst.
   klarer Kein-Treffer-Ausgang ins Bau-Interview.
 - **Routing/Description:** fehlendes Prüf-Objekt wird erfragt; die Beschreibung deckt
   jetzt „Codebasis oder Verlauf durchsuchen" ab.
+- **Kohärenz-Feinschliff** (getrennte Instanz): Reifestufen-Aufstieg braucht eine
+  anhängende Durchgangs-Historie (Zustandsdatei akkumuliert, statt zu überschreiben);
+  Loop-Doktor prüft „zu früher Aufstieg"; Ausführungs-Leitplanke rein defensiv gerahmt.
 
 ### Landingpage
 - Modernisierter, aufgeräumter Relaunch (Layout-Rhythmus statt Karten-Monotonie:
