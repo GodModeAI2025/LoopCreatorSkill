@@ -98,8 +98,12 @@ Eintrag nennt Symptom, Ursache und Reparatur.
   andere Modellfamilie, eigene Session); ohne sie den Fix probeweise zurücknehmen und
   prüfen, ob der Test wieder rot wird.
 - **Prüf-Theater** *(falsches Ergebnis)* — Der Check läuft, prüft aber nicht das
-  Erfolgs-Gate. **Reparatur:** vage oder selbst benotete Prüfung durch einen
-  reproduzierbaren Check am beobachtbaren Maßstab ersetzen.
+  Erfolgs-Gate. Typische Formen: selbst benotet; ein Werkzeug meldet trotz Fehler
+  Erfolg; die Suche trifft die eigenen Notizen oder den Aufgabentext des Loops statt
+  das Ergebnis; der Check schaut auf den falschen Ort. **Reparatur:** vage oder
+  selbst benotete Prüfung durch einen reproduzierbaren Check am beobachtbaren
+  Maßstab ersetzen, ihn auf das Ergebnis begrenzen und ihn einmal mit einem
+  absichtlich kaputten Stand rot sehen, bevor er wieder zählt.
 - **Fehlende Bremse** *(kritisch)* — Der Loop läuft, bis Zeit, Kosten oder Versuche
   alle sind, und meldet das als Erfolg. **Reparatur:** No-Progress-Stopp und ehrliche
   Endzustände; Budget-Erschöpfung nie als Erfolg.

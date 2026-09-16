@@ -34,6 +34,12 @@ Prüfen → Festhalten → Wiederholen/Stoppen. Wende dabei diese Regeln an:
 - Mach das Erfolgs-Gate **beobachtbar und reproduzierbar**. Ersetze „bis ich
   zufrieden bin" wo möglich durch eine Rubrik, Schwelle, einen Benchmark, eine
   Prüfer-Entscheidung oder eine endliche Szenario-Liste.
+- **Sieh einen mechanischen Check einmal scheitern, bevor du ihm traust.** Füttere
+  ihn vor dem ersten Lauf mit einem absichtlich kaputten Stand und prüfe, dass er ablehnt. Ein
+  Check, der nie rot war, ist unbewiesen: Manche Werkzeuge melden trotz Fehler
+  Erfolg, eine Textsuche findet das Gesuchte in den eigenen Notizen des Loops, ein
+  falscher Pfad prüft ein leeres Verzeichnis. Richte den Check deshalb auf das
+  Ergebnis selbst, nicht auf Zustandsdatei, Protokoll oder Aufgabentext des Loops.
 - Definiere die relevanten Endzustände: Erfolg, sauberer Leerlauf, blockiert,
   Freigabe nötig, erschöpft, stagniert. Melde einen Fehler oder ein erschöpftes
   Budget nie als Erfolg.

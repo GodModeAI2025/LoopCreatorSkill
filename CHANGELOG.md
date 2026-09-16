@@ -2,6 +2,19 @@
 
 Nennenswerte Änderungen an Skill, Katalog und Landingpage. Neueste zuerst.
 
+## 2026-09-16
+
+### Skill
+- **Rot-Test für den Check:** Ein Abnahme-Check verdient Vertrauen erst, wenn er einmal
+  an einem absichtlich kaputten Stand abgelehnt hat. Neue Bau-Regel in `bauen.md`,
+  Preflight-Punkt in `SKILL.md`, Zeile im Sicherheits-Check der `loop-vorlage.md`.
+- **Prüf-Theater** im Loop-Doktor um die typischen Formen ergänzt: Werkzeug meldet trotz
+  Fehler Erfolg, Suche trifft die eigenen Notizen des Loops, Check schaut auf den
+  falschen Ort. Reparatur: Check auf das Ergebnis begrenzen und rot sehen.
+- Anregung: der Fehlerkatalog von
+  [ralph-loop-playbook](https://github.com/oh-ashen-one/ralph-loop-playbook) (MIT) —
+  eigene Formulierung, kein Text übernommen.
+
 ## 2026-07-04
 
 ### Skill
