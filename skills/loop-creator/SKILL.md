@@ -213,7 +213,9 @@ substanzielle Schwächen. Bestätige:
 - Jeder Durchgang wählt eine begrenzte Aktion, prüft sie mit beobachtbarem Beleg
   und hält genug Zustand für den nächsten Durchgang oder die Übergabe fest.
 - Die Prüfung ist reproduzierbar und — wo Overfitting oder Selbstabnahme drohen —
-  vom Auswahl-Signal getrennt.
+  vom Auswahl-Signal getrennt. Ein mechanischer Check kann nachweislich scheitern:
+  An einem absichtlich kaputten Stand lehnt er ab, und er liest das Ergebnis, nicht
+  die eigenen Notizen des Loops.
 - Erfolg, sauberer Leerlauf, blockiert, Freigabe nötig, Budget erschöpft und
   No-Progress-Stopp sind benannt, wo relevant; Fehler werden nie als Erfolg gemeldet.
 - Folgenreiche Aktionen brauchen die passende Freigabe; fremde Arbeit und frischer

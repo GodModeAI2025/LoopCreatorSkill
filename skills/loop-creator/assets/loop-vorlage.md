@@ -71,6 +71,8 @@ dauerhaft, nicht nur in `tmp/`.
 - [ ] Prüfung ist reproduzierbar und — bei Overfitting-Gefahr — vom Auswahl-Signal
       getrennt.
 - [ ] Prüfung läuft möglichst über eine getrennte Instanz (Agent / Modell / Session).
+- [ ] Ein mechanischer Check ist einmal an einem absichtlich kaputten Stand rot geworden und liest
+      das Ergebnis, nicht Zustandsdatei oder Protokoll des Loops.
 - [ ] Endzustände sind benannt; ein Fehler wird nie als Erfolg gemeldet.
 - [ ] Folgenreiche Aktionen haben eine Freigabe-Grenze; fremde Arbeit bleibt erhalten.
 - [ ] Keine erfundenen Tools, Limits, Metriken, Verantwortlichen, Berechtigungen.
