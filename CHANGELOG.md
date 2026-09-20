@@ -9,7 +9,10 @@ Nennenswerte Änderungen an Skill, Katalog und Landingpage. Neueste zuerst.
   Verschiedenheit der Aktionen. Mehrere verschiedene Versuche auf derselben schon
   widerlegten Annahme sind kein Fortschritt. Ergänzt in der Stopp-Leitplanke und der
   Gefahren-Tabelle der `SKILL.md`, in der Stopp-Regel von `bauen.md` und als getarnte
-  Form der **Endlos-Reparatur** in `pruefen.md`.
+  Form der **Endlos-Reparatur** in `pruefen.md`. Damit der Stopp pruefbar bleibt, haelt
+  jeder Durchgang in der Zustandsdatei fest, was er neu ausgeschlossen oder belegt hat
+  (Feld **Neu gewusst** in der Loop-Vorlage und in der Prompt-Vorlage); steht dort
+  „nichts", zaehlt der Durchgang als Durchgang ohne Fortschritt.
 - **Prüf-Theater** um eine weitere Form ergänzt: Der Check urteilt über einen
   zwischengespeicherten Stand (Cache, altes Build-Artefakt, alter Container) und wird
   grün, obwohl die gerade geänderte Quelle kaputt ist. Reparatur: den

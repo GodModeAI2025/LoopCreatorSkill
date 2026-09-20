@@ -146,7 +146,10 @@ Diese Regeln verhindern die typischen Arten, auf die Loops scheitern:
   Verschiedenheit der Aktionen**: Vier verschiedene Versuche, die alle auf
   derselben schon widerlegten Annahme aufsetzen, sind kein Fortschritt, auch wenn
   jeder Durchgang anders aussieht. Frag deshalb „was wissen wir jetzt, das wir
-  vorher nicht wussten?" statt „hat sich etwas bewegt?".
+  vorher nicht wussten?" statt „hat sich etwas bewegt?" — und halte die Antwort
+  je Durchgang in der Zustandsdatei fest („neu gewusst": was dieser Durchgang
+  ausgeschlossen oder belegt hat, sonst „nichts"). Ein Durchgang mit „nichts"
+  zählt als Durchgang ohne Fortschritt, auch wenn eine neue Aktion lief.
 - **Frischen Zustand lesen.** Lies den aktuellen Zustand vor folgenreichen
   Aktionen neu. Liefere keinen veralteten Code, keine halben Artefakte und keine
   Annahmen aus einem früheren Durchgang.
