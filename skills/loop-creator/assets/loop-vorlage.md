@@ -39,8 +39,10 @@ Reifestufe braucht mehrere saubere, zeitgestempelte Einträge — halte die Hist
 dauerhaft, nicht nur in `tmp/`.
 
 - **<Zeitstempel>** — Aktion: [die eine begrenzte Änderung] · Beleg: [Abnahme-Check und
-  Bedingungen] · Ergebnis: [Erfolg | sauberer Leerlauf | blockiert | Freigabe nötig |
-  Budget erschöpft | kein Fortschritt] · Restarbeit: [was der nächste Durchgang aufnimmt]
+  Bedingungen] · Neu gewusst: [was dieser Durchgang ausgeschlossen oder belegt hat —
+  sonst „nichts", dann zählt er als Durchgang ohne Fortschritt] · Ergebnis: [Erfolg |
+  sauberer Leerlauf | blockiert | Freigabe nötig | Budget erschöpft | kein Fortschritt]
+  · Restarbeit: [was der nächste Durchgang aufnimmt]
 
 ## Hohe Priorität
 - [was als Nächstes dran ist]

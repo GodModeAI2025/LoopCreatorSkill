@@ -50,7 +50,13 @@ Prüfen → Festhalten → Wiederholen/Stoppen. Wende dabei diese Regeln an:
 - Nimm ein vom Nutzer gesetztes Limit, wenn es eines gibt. Sonst nutze einen
   **No-Progress-Stopp** statt eine Zeit-, Iterations-, Kosten-, Versuchs- oder
   Umfangsgrenze zu erfinden. Nenne einen Eskalations-Verantwortlichen nur, wenn der
-  Nutzer einen geliefert hat oder er aus dem Rahmen bekannt ist.
+  Nutzer einen geliefert hat oder er aus dem Rahmen bekannt ist. Binde den Stopp an
+  das, was der Loop neu weiß, nicht daran, dass die nächste Aktion anders heißt:
+  Wer nach einem Rechtefehler nacheinander erhöhte Rechte, einen anderen Pfad und
+  ein anderes Konto probiert, hat dreimal gehandelt und nichts dazugelernt. Damit
+  das prüfbar bleibt, hält jeder Durchgang in der Zustandsdatei fest, was er neu
+  ausgeschlossen oder belegt hat; steht dort „nichts", war es ein Durchgang ohne
+  Fortschritt.
 - Lies den aktuellen Zustand vor folgenreichen Aktionen neu. Liefere keinen
   veralteten Code, keine halben Artefakte, keine Annahmen aus einem früheren Durchgang.
 - Bewahre unbeteiligte Arbeit. Verlange Freigabe für zerstörende, unumkehrbare,
@@ -77,7 +83,8 @@ Diese Vorlage lässt sich kopieren und anpassen:
 > Aktion im erlaubten Rahmen und führe die Änderung durch.
 >
 > Lass [Abnahme-Check] unter gleichen Bedingungen laufen. Halte fest, was sich
-> geändert hat, den Beleg und den nächsten Schritt in [Zustandsdatei].
+> geändert hat, was du neu weißt, den Beleg und den nächsten Schritt in
+> [Zustandsdatei].
 >
 > Wiederhole nur, solange Fortschritt messbar ist und [Limit, falls gesetzt — sonst:
 > kein Fortschritt] hält. Stoppe,

@@ -100,16 +100,23 @@ Eintrag nennt Symptom, Ursache und Reparatur.
 - **Prüf-Theater** *(falsches Ergebnis)* — Der Check läuft, prüft aber nicht das
   Erfolgs-Gate. Typische Formen: selbst benotet; ein Werkzeug meldet trotz Fehler
   Erfolg; die Suche trifft die eigenen Notizen oder den Aufgabentext des Loops statt
-  das Ergebnis; der Check schaut auf den falschen Ort. **Reparatur:** vage oder
+  das Ergebnis; der Check schaut auf den falschen Ort; der Check urteilt über einen
+  zwischengespeicherten Stand — Cache, altes Build-Artefakt, alter Container — und
+  wird grün, obwohl die gerade geänderte Quelle kaputt ist. **Reparatur:** vage oder
   selbst benotete Prüfung durch einen reproduzierbaren Check am beobachtbaren
-  Maßstab ersetzen, ihn auf das Ergebnis begrenzen und ihn einmal mit einem
+  Maßstab ersetzen, ihn auf das Ergebnis begrenzen, vor jedem Urteil den
+  zwischengespeicherten Stand verwerfen und ihn einmal mit einem
   absichtlich kaputten Stand rot sehen, bevor er wieder zählt.
 - **Fehlende Bremse** *(kritisch)* — Der Loop läuft, bis Zeit, Kosten oder Versuche
   alle sind, und meldet das als Erfolg. **Reparatur:** No-Progress-Stopp und ehrliche
   Endzustände; Budget-Erschöpfung nie als Erfolg.
 - **Endlos-Reparatur** *(ärgerlich)* — Bauen und Prüfen pendeln ohne messbaren
-  Fortschritt. **Reparatur:** messbares Gate setzen; bleibt der Fortschritt mehrere
-  Durchgänge aus, an einen Menschen übergeben statt weiter zu pendeln.
+  Fortschritt. Die getarnte Form: Jeder Durchgang versucht etwas anderes, aber alle
+  Versuche setzen auf derselben schon widerlegten Annahme auf — die Aktionen sind
+  verschieden, der Erkenntnisstand ist es nicht. **Reparatur:** messbares Gate
+  setzen und den No-Progress-Stopp am neu Gewussten festmachen, nicht daran, dass
+  die nächste Aktion anders heißt; bleibt der Fortschritt mehrere Durchgänge aus, an
+  einen Menschen übergeben statt weiter zu pendeln.
 - **Zustands-Fäule** *(falsches Ergebnis)* — Entscheidungen auf alten Daten, halbe
   Artefakte. **Reparatur:** frischen Zustand vor folgenreichen Aktionen neu lesen.
 - **Benachrichtigungs-Müdigkeit** *(ärgerlich)* — Der Loop meldet so viel, dass
