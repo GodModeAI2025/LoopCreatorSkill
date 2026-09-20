@@ -50,7 +50,10 @@ Prüfen → Festhalten → Wiederholen/Stoppen. Wende dabei diese Regeln an:
 - Nimm ein vom Nutzer gesetztes Limit, wenn es eines gibt. Sonst nutze einen
   **No-Progress-Stopp** statt eine Zeit-, Iterations-, Kosten-, Versuchs- oder
   Umfangsgrenze zu erfinden. Nenne einen Eskalations-Verantwortlichen nur, wenn der
-  Nutzer einen geliefert hat oder er aus dem Rahmen bekannt ist.
+  Nutzer einen geliefert hat oder er aus dem Rahmen bekannt ist. Binde den Stopp an
+  das, was der Loop neu weiß, nicht daran, dass die nächste Aktion anders heißt:
+  Wer nach einem Rechtefehler nacheinander erhöhte Rechte, einen anderen Pfad und
+  ein anderes Konto probiert, hat dreimal gehandelt und nichts dazugelernt.
 - Lies den aktuellen Zustand vor folgenreichen Aktionen neu. Liefere keinen
   veralteten Code, keine halben Artefakte, keine Annahmen aus einem früheren Durchgang.
 - Bewahre unbeteiligte Arbeit. Verlange Freigabe für zerstörende, unumkehrbare,

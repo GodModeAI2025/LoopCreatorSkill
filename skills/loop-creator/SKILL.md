@@ -142,7 +142,11 @@ Diese Regeln verhindern die typischen Arten, auf die Loops scheitern:
   wenn es eines gibt. Sonst nimm einen **No-Progress-Stopp**: Bleiben mehrere
   Durchgänge ohne messbare Veränderung, übergib an einen Menschen, statt zwischen
   Bauen und Prüfen zu pendeln. Erfinde keine Zeit-, Iterations-, Kosten- oder
-  Umfangsgrenze.
+  Umfangsgrenze. Miss den Fortschritt dabei an der **Annahme, nicht an der
+  Verschiedenheit der Aktionen**: Vier verschiedene Versuche, die alle auf
+  derselben schon widerlegten Annahme aufsetzen, sind kein Fortschritt, auch wenn
+  jeder Durchgang anders aussieht. Frag deshalb „was wissen wir jetzt, das wir
+  vorher nicht wussten?" statt „hat sich etwas bewegt?".
 - **Frischen Zustand lesen.** Lies den aktuellen Zustand vor folgenreichen
   Aktionen neu. Liefere keinen veralteten Code, keine halben Artefakte und keine
   Annahmen aus einem früheren Durchgang.
@@ -172,6 +176,7 @@ Als Schnellübersicht — typische Gefahr und die Leitplanke dagegen:
 | Reward Hacking (Kennzahl statt Ziel optimiert) | Beobachtbares Erfolgs-Gate; Arbeitssignal vom Abnahme-Check trennen |
 | Selbstabnahme | Prüfung in getrennter Instanz, ablehnender Default; sonst mechanischer Gegencheck |
 | Fehlende Bremse | No-Progress-Stopp; ehrliche Endzustände statt Fehler-als-Erfolg |
+| Scheinfortschritt (neue Aktion, alte widerlegte Annahme) | Fortschritt am neu Gewussten messen, nicht an der Verschiedenheit der Aktionen |
 | Veralteter Zustand | Frischen Zustand vor folgenreichen Aktionen neu lesen |
 | Übergriff auf fremde Arbeit | Unbeteiligtes bewahren; Freigabe-Grenze für folgenreiche Aktionen |
 | Zu früher Aufstieg | Mehr Autonomie nur mit belegtem Durchgang (siehe Reifestufen) |
